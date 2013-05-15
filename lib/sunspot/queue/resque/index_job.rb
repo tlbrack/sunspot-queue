@@ -10,7 +10,7 @@ module Sunspot::Queue::Resque
 
     def self.perform(klass, id)
       without_proxy do
-        constantize(klass).find(id).solr_index
+        constantize(klass).unscoped.find(id).solr_index
       end
     end
   end
